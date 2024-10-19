@@ -4,19 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beauty Brand Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif; /* Font style */
+            background-color: #F0E6FA; /* White background */
+        }
+        .hero-banner {
+            background-image: linear-gradient(180deg, #D397F8, #F0E6FA);
+            margin-bottom: 30px;
+            padding-top: 0px;
+            height: auto;
+            overflow: hidden;
+            background-color: #36054a;
+        }
+        .hero-banner .first-row {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center align items vertically */
+            justify-content: space-between; /* Space between items */
+            padding: 0 7%;
+        }
+        .hero-banner .slogan {
+            text-align: left;
+            color: #090101;
+            line-height: 1.2;
+            width: 60%; /* Text takes 80% of the width */
+        }
+        .hero-banner .big-image {
+            width: 40%; /* Image takes 20% of the width */
+        }
+        .slogan h1 {
+            font-family: "Josefin Sans", sans-serif;
+            color: black;
+            font-size: 60px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .slogan h1 .cursive {
+            font-family: "Qwitcher Grypen", cursive;
+            font-size: 80px;
+            background: linear-gradient(100deg, #a83dd4, #7cdae9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-left: 5px;
+            font-weight: 600;
+        }
+        .slogan .line-2 {
+            margin-top: -55px;
+        }
+        .slogan h2 {
+            font-weight: 600;
+            font-size: 24px;
+            font-family: "Josefin Sans", sans-serif;
+        }
+        .hero-banner .big-image img {
+            width: 100%; /* Make the image take the full width of its container */
+            height: auto;
+            opacity: 1;
+            margin-top: 2cm;
+            mix-blend-mode: multiply;
+            mix-blend-mode: darken;
+            z-index: auto;
+            background-color: #000000;
+        }
+        .services {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #b684ef;
+            padding: 50px 40px;
+            border-radius: 20px;
+            width: 1200px;
+            height: 100px;
+            margin: auto;
+            gap: 20px;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+            margin-bottom: 200px; /* Add space below the services section */
+        }
+        .services .service {
+            text-align: center;
+        }
+        .services .service .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #84c0ef, #84efe7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            margin: 0 auto;
+        }
+        .services .service h1 {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .services .service p {
+            font-size: 14px;
+        }
+
+        /* Chatbox and General Styles */
+        #chatbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: 1px solid black; /* Black border */
+            width: 8cm;
+            height: 10cm; /* Height */
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            overflow-y: auto; /* Allows scrolling */
+        }
+        #chat {
+            width: 100%;
+            height: 80%; /* Adjusted height for textarea */
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            overflow-y: auto; /* Allows scrolling */
+        }
+        .message {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #d1f0d1; /* Light green for user messages */
+            text-align: right; /* Align user messages to the right */
+        }
+        .chatbot-message {
+            background-color: #f0d1d1; /* Light red for chatbot messages */
+            text-align: left; /* Align chatbot messages to the left */
+        }
+        #messageIcon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #84c0ef;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Beauty Brand Chatbot</h1>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="first-row">
+            <div class="slogan">
+                <h1 class="line-1">
+                    Unveil Your <span class="cursive">Radiance,</span>
+                </h1>
+                <h1 class="line-2">
+                    Redefine your <span class="cursive">Beauty!</span>
+                </h1>
+                <h2>Discover personalized care,<br> and let your inner glow shine every day.</h2>
+            </div>
+            <div class="big-image">
+                <img src="{{ url_for('static', filename='skincare.jpg') }}" alt="illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section>
+        <div class="workingContainer">
+            <div class="flex justify-content-between services">
+                <div class="service">
+                    <div class="icon">
+                        <i class="fas fa-search"></i> <!-- Magnifying glass icon -->
+                    </div>
+                    <h1 class="service-title bold">STEP 1</h1>
+                    <p class="service-description">Explore the services.</p>
+                </div>
+                <div class="service">
+                    <div class="icon">
+                        <i class="fas fa-check"></i> <!-- Checkmark icon -->
+                    </div>
+                    <h1 class="service-title bold">STEP 2</h1>
+                    <p class="service-description">Select the services of your choice.</p>
+                </div>
+                <div class="service">
+                    <div class="icon">
+                        <i class="fas fa-calendar-check"></i> <!-- Calendar check icon -->
+                    </div>
+                    <h1 class="service-title bold">STEP 3</h1>
+                    <p class="service-description">Book your reservation and receive confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbox -->
     <div id="chatbox">
-        <textarea id="chat" rows="10" cols="50" readonly></textarea><br>
+        <div id="chat"></div> <!-- Changed from textarea to div for better layout -->
         <input type="text" id="user_input" placeholder="Type your message...">
         <button onclick="sendMessage()">Send</button>
     </div>
-    
+
+    <!-- Message Icon -->
+    <button id="messageIcon" onclick="toggleChatbox()">💬</button>
+
     <script>
         function sendMessage() {
             const userInput = document.getElementById("user_input").value;
-            document.getElementById("chat").value += "You: " + userInput + "\n";
+            if (!userInput) return; // Prevent sending empty messages
+           
+            // Create user message element
+            const userMessage = document.createElement("div");
+            userMessage.classList.add("message", "user-message");
+            userMessage.textContent = "You: " + userInput;
+            document.getElementById("chat").appendChild(userMessage);
+           
+            // Send the message to the server
             fetch("/get_response", {
                 method: "POST",
                 headers: {
@@ -26,9 +234,19 @@
             })
             .then(response => response.text())
             .then(data => {
-                document.getElementById("chat").value += "Chatbot: " + data + "\n";
-                document.getElementById("user_input").value = "";
+                // Create chatbot response element
+                const chatbotMessage = document.createElement("div");
+                chatbotMessage.classList.add("message", "chatbot-message");
+                chatbotMessage.textContent = "Chatbot: " + data;
+                document.getElementById("chat").appendChild(chatbotMessage);
+                // Clear the input
+                document.getElementById("user_input").value = '';
             });
+        }
+
+        function toggleChatbox() {
+            const chatbox = document.getElementById("chatbox");
+            chatbox.style.display = chatbox.style.display === "block" ? "none" : "block";
         }
     </script>
 </body>
