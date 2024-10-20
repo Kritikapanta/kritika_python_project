@@ -1,7 +1,7 @@
 # kritika_python_project
 In this project I have created a chatbot 
 
-This is a chatbot application for a beauty studio that allows users to ask questions about booking appointments, available services, pricing, and more. The chatbot provides instant responses and offers suggestions for common queries. If a question is not recognized, the chatbot collects the user's query for follow-up.
+This is a chatbot application for a beauty studio that allows users to ask questions about booking appointments, available services, pricing, and more. The chatbot provides instant responses. If a question is not recognized, the chatbot collects the user's query for follow-up.
 
 Features
 1. Responds to frequently asked questions, such as service booking, pricing, and operating hours.
