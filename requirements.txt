@@ -1,0 +1,4 @@
+Flask==3.0.3
+Werkzeug==3.0.4
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.26.0
