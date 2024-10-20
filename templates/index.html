@@ -275,6 +275,12 @@
             <input type="text" id="user_input" placeholder="Type your message...">
             <button onclick="sendMessage()">Send</button>
         </div>
+        <div class="suggestions">
+            <button onclick="sendSuggestedMessage('how can I book an appointment?')">How can I book an appointment?</button>
+            <button onclick="sendSuggestedMessage('what services do you offer?')">What services do you offer?</button>
+            <button onclick="sendSuggestedMessage('do you have bridal makeup services?')">Do you have bridal makeup services?</button>
+            <button onclick="sendSuggestedMessage('what are your service prices?')">What are your service prices?</button>
+        </div>
     </div>
 
     <!-- Message Icon -->
@@ -284,13 +290,13 @@
         function sendMessage() {
             const userInput = document.getElementById("user_input").value;
             if (!userInput) return; // Prevent sending empty messages
-
+    
             // Create user message element
             const userMessage = document.createElement("div");
             userMessage.classList.add("message", "user-message");
             userMessage.textContent = userInput;
             document.getElementById("chat").appendChild(userMessage);
-
+    
             // Send the message to the server
             fetch("/get_response", {
                 method: "POST",
@@ -310,11 +316,16 @@
                 document.getElementById("user_input").value = '';
             });
         }
-
+    
         function toggleChatbox() {
             const chatbox = document.getElementById("chatbox");
             chatbox.style.display = chatbox.style.display === "block" ? "none" : "block";
         }
-    </script>
+    
+        function sendSuggestedMessage(suggestion) {
+            document.getElementById("user_input").value = suggestion; // Set the input value to the suggestion
+            sendMessage(); // Call the existing sendMessage function to send the input
+        }
+    </script>    
 </body>
 </html>
