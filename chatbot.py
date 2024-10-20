@@ -127,7 +127,7 @@ def get_response(user_input):
     return "Thank you for leaving your message. We will contact you soon."
 
 if __name__ == "__main__":
-    print("Welcome to the Beauty Studio Chatbot!")
+    print("Hello, I am Kritika. How can I help you today?")
     while True:
         user_input = input("You: ")
         if user_input.lower() in ["bye", "exit", "quit"]:
