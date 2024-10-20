@@ -4,6 +4,8 @@ from fuzzywuzzy import process
 
 questions = {
         ("hi", "hello", "greetings","good morning", "good night", "good evening"): "Hello! How can I help you today?",
+        "hi":"Hello! How can I help you today?",
+        "hello":"Hello! How can I help you today?",
         "how are you?": "I'm fine, how about you?",
         ("bye", "good bye"): "Goodbye! Have a great day!",
         ("what is the best facial treatment for oily skin?", "facial oily skin", "facial for oily skin"):"For oily skin, we recommend a deep-cleansing facial that incorporates clay or charcoal masks. These ingredients are excellent for absorbing excess oil and unclogging pores. Additionally, our facials include salicylic acid, which helps prevent breakouts and control shine, leaving your skin refreshed and balanced.",
